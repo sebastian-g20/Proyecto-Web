@@ -1,0 +1,20 @@
+{
+box-sizing: border-box;
+width: 200px;
+padding: 20px;
+border: 2px #028090;
+}
+/* ancho real: 200px (fijo) */
+
+
+.navbar {
+
+display: flex;
+justify-content: space-between;
+align-items: center;
+border: solid #028090;
+}
+.menu {
+display: flex;
+gap: 24px;
+}
