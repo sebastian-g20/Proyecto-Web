@@ -1,0 +1,47 @@
+header {
+box-sizing: border-box;
+width: 200px;
+padding: 20px;
+border: 2px ;
+}
+/* ancho real: 200px (fijo) */
+
+.caracteristicas {
+box-sizing: border-box;
+
+padding: 20px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+border: solid #18decd;
+}
+hero{
+box-sizing: border-box;
+padding: 20px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+border: solid #de184a;
+}
+.contactos {
+box-sizing: border-box;
+padding: 20px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+border: solid #de184a;
+}
+
+.navbar {
+box-sizing: border-box;
+display: flex;
+justify-content: space-between;
+align-items: center;
+border: solid #4275f5;
+background: #4275f5;
+}
+.menu {
+box-sizing: border-box;
+display: flex;
+gap: 24px;
+}
