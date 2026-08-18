@@ -1,20 +1,107 @@
-{
-box-sizing: border-box;
-width: 200px;
+* {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+body{ background-color: #ffffff; color: #121212;}
+body.oscuro { background-color: #121212; color: #ffffff; }
+
+.layout {
+display: grid;
+grid-template-columns: 1fr;
+grid-template-areas:
+"header"
+"navbar"
+"hero"
+"caracteristicas"
+"contactos"
+"footer";
+gap: 1.5rem;
+padding: 1.5rem;
+}
+
+header {
+grid-area: header;
+width: 100px;
 padding: 20px;
-border: 2px #028090;
+border: 2px;
 }
 /* ancho real: 200px (fijo) */
-
-
-.navbar {
-
+hero{
+grid-area: hero; 
+padding: 20px;
 display: flex;
-justify-content: space-between;
+gap: 1rem;
+flex-direction: column;
 align-items: center;
-border: solid #028090;
+border: solid #d40606;
+}
+.caracteristicas {
+grid-area: caracteristicas;
+padding: 20px;
+display: flex;
+gap: 1rem;
+flex-direction: column;
+align-items: center;
+border: solid #18decd;
+}
+
+.contactos {
+grid-area: contactos;
+padding: 20px;
+display: flex;
+gap: 1rem;
+flex-direction: column;
+align-items: center;
+border: solid #d40606;
+}
+
+.navbar {  
+grid-area: navbar; 
+display: flex;
+padding: 10px;
+gap: 1rem;
+flex-direction: column;
+align-items: center;
+border: solid #4275f5;
+background: #4275f5;
 }
 .menu {
-display: flex;
-gap: 24px;
+    list-style: none;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
 }
+
+/* Mobile-first: estilos base (sin media query) */
+
+/* Tablet en adelante */
+@media (min-width: 550px) {
+.layout {
+    grid-template-columns: 1fr 1fr; 
+grid-template-areas:
+"header header"
+"navbar navbar"
+"hero hero"
+"caracteristicas contactos" 
+"footer footer";
+}
+ hero, .caracteristicas, .contactos, .navbar {
+    flex-direction: row; 
+    justify-content: space-between;
+}
+}
+
+/* Escritorio en adelante */
+@media (min-width: 1020px) {
+.layout { grid-template-columns: 1fr 1fr 1fr; 
+grid-template-areas:
+"header header header"
+"navbar navbar navbar"
+"hero caracteristicas contactos"
+"footer footer footer"
+}
+}
+
+footer { grid-area: footer; }
