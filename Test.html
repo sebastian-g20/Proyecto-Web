@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- Meta viewport: obligatorio para que @media funcione correctamente en móviles -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ejemplo: Diseño Responsivo Mobile-First</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: #1F2937;
+      line-height: 1.5;
+    }
+
+    .banner {
+      background: #16213E;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .banner span {
+      display: inline-block;
+      background: #E8A33D;
+      color: #16213E;
+      font-weight: bold;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      margin-top: 0.5rem;
+    }
+
+    /* ============================================
+     BASE: MOBILE-FIRST (sin @media)
+     Una sola columna — se aplica a TODAS las pantallas
+     hasta que una @media query la sobrescriba.
+     ============================================ */
+    .pagina {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        "header"
+        "nav"
+        "main"
+        "aside"
+        "footer";
+      gap: 1rem;
+      padding: 1rem;
+    }
+
+    header {
+      grid-area: header;
+    }
+
+    nav {
+      grid-area: nav;
+    }
+
+    main {
+      grid-area: main;
+    }
+
+    aside {
+      grid-area: aside;
+    }
+
+    footer {
+      grid-area: footer;
+    }
+
+    header,
+    nav,
+    main,
+    aside,
+    footer {
+      padding: 1.25rem;
+      border-radius: 38px;
+    }
+
+    header {
+      background: #0E7C86;
+      color: white;
+    }
+
+    nav {
+      background: #5FBFC7;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    main {
+      background: #F7F9FB;
+      border: 1px solid #E1E6ED;
+    }
+
+    aside {
+      background: #FBEBD3;
+    }
+
+    footer {
+      background: #16213E;
+      color: #AAB6CC;
+      text-align: center;
+    }
+
+    /* ============================================
+     BREAKPOINT: TABLET (≥576px)
+     ============================================ */
+    @media (min-width: 576px) {
+      .banner span {
+        content: "Tablet";
+      }
+
+      nav ul {
+        justify-content: center;
+      }
+    }
+
+    /* ============================================
+     BREAKPOINT: ESCRITORIO (≥768px)
+     Se sobrescribe SOLO lo necesario: pasamos
+     de 1 columna a 2 columnas con áreas nombradas.
+     ============================================ */
+    @media (min-width: 768px) {
+      .pagina {
+        grid-template-columns: 2fr 1fr;
+        grid-template-areas:
+          "header  header"
+          "nav     nav"
+          "main    aside"
+          "footer  footer";
+      }
+    }
+
+    @media (min-width: 1200px) {
+      .pagina {
+        grid-template-columns: 2fr 2fr;
+        grid-template-areas:
+          "header  header"
+          "nav     nav"
+          "main    aside"
+          "footer  footer";
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="banner">
+    Redimensiona la ventana del navegador para ver el cambio de layout
+    <br>
+    <span id="anchoActual">Ancho actual: — px</span>
+  </div>
+
+  <div class="pagina">
+    <header>
+      <h1>Diseño Responsivo</h1>
+      <p>Mobile-first: base en 1 columna, @media agrega 2 columnas desde 768px.</p>
+    </header>
+
+    <nav>
+      <ul>
+        <li>Inicio</li>
+        <li>Servicios</li>
+        <li>Contacto</li>
+      </ul>
+    </nav>
+
+    <main>
+      <h2>Contenido principal</h2>
+      <p>En móvil ocupa todo el ancho. En escritorio (≥768px) comparte fila con el aside.</p>
+    </main>
+
+    <aside>
+      <h3>Aside</h3>
+      <p>En móvil aparece debajo del contenido. En escritorio aparece al costado.</p>
+    </aside>
+
+    <footer>
+      <p>&copy; 2026 — Desarrollo de Aplicaciones Web</p>
+    </footer>1
+  </div>
+
+  <script>
+    // Solo para fines demostrativos: muestra el ancho actual de la ventana
+    const el = document.getElementById('anchoActual');
+    function actualizarAncho() {
+      el.textContent = 'Ancho actual: ' + window.innerWidth + 'px';
+    }
+    window.addEventListener('resize', actualizarAncho);
+    actualizarAncho();
+  </script>
+
+</body>
+
+</html>
